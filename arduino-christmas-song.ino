@@ -1,7 +1,8 @@
 #include "blink.h"
-#include "pitches.h"
-#include "merry_christmas.h"
-#include "jingle_bell.h"
+#include "music.h"
+
+#include "songs/merry_christmas.h"
+#include "songs/jingle_bell.h"
 
 #define BUZZER_PIN 12
 #define LED_PIN 13 // Built-in led
@@ -34,13 +35,7 @@ void playSong(int notes[], int durations[], int size, int tempo, int buzzerPin, 
 
     for (int note = 0; note < size; note++)
     {
-        // nt duration = noteDuration / 4 * merryChristmasDurations[note];
         int duration = (noteDuration * 4 / durations[note]) - pause;
-        // int pause = 1.3 * duration;
-
-        // int totalDuration = durations[note] / 4 * noteDuration;
-        // int duration = 0.43 * totalDuration;
-        // int pause = totalDuration - duration;
 
         digitalWrite(ledPin, HIGH);
         tone(buzzerPin, notes[note], duration);
