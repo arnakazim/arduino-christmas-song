@@ -2,8 +2,8 @@
 #include "pitches.h"
 #include "merry_christmas.h"
 
-#define BUZZER_PIN = 12;
-#define LED_PIN = 13; // Built-in led
+#define BUZZER_PIN  12
+#define LED_PIN     13 // Built-in led
 
 void setup()
 {
