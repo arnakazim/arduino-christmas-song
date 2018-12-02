@@ -1,5 +1,7 @@
 /*
  * Jingle Bell
+ * 
+ * Based on Y.A.Chong's work (http://myarduinomelodies.blogspot.com/2013/11/2-jingle-bell.html)
  */
 
 int jingleBellTempo = 123;

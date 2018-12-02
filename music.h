@@ -1,7 +1,9 @@
 /*
- * Pitches for Arduino buzzer
+ * Play a song on a buzzer
  * 
- * Based on Joshi's work (https://www.hackster.io/joshi/)
+ * By Arnakazim (http://www.arnaudouvrier.fr)
+ * 
+ * Pitches are based on Joshi's work (https://www.hackster.io/joshi/)
  */
 
 #define N_B0  31
@@ -93,3 +95,21 @@
 #define N_CS8 4435
 #define N_D8  4699
 #define N_DS8 4978
+
+void playSong(int notes[], int durations[], int size, int tempo, int buzzerPin, int ledPin)
+{
+
+    int noteDuration = 60000 / tempo; // BPM duration in miliseconds
+    int pause = tempo / 3;
+
+    for (int note = 0; note < size; note++)
+    {
+        int duration = (noteDuration * 4 / durations[note]) - pause;
+
+        digitalWrite(ledPin, HIGH);
+        tone(buzzerPin, notes[note], duration);
+        delay(duration);
+        digitalWrite(ledPin, LOW);
+        delay(pause);
+    }
+}

@@ -1,5 +1,7 @@
 /*
  * We Wish You a Merry Christmas
+ * 
+ * Based on Y.A.Chong's work (http://myarduinomelodies.blogspot.com/2013/11/3-we-wish-you-merry-christmas.html)
  */
 
 int merryChristmasTempo = 120;

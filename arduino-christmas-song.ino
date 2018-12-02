@@ -1,3 +1,19 @@
+/*
+	arduino-christmas-song
+
+	Play some Christmas songs on an Arduino. Made for the 2018 NODE's Secret Santa project (https://n-o-d-e.net)
+
+	The circuit:
+	* Pin 13: Built-in led
+	* Pin 12: Buzzer
+
+	Created 21/11/2018
+	By Arnakazim
+
+	https://github.com/arnakazim/arduino-christmas-song/
+
+*/
+
 #include "blink.h"
 #include "music.h"
 
@@ -7,40 +23,25 @@
 #define BUZZER_PIN 12
 #define LED_PIN 13 // Built-in led
 
-void playSong(int notes[], int durations[], int size, int tempo, int buzzerPin, int ledPin);
-
 void setup()
 {
+    // Setting up the outputs
     pinMode(LED_PIN, OUTPUT);
     pinMode(BUZZER_PIN, OUTPUT);
 
+    // Just to know that the Arduino is ready
     blink(LED_PIN, 500, 250);
     blink(LED_PIN, 250, 0);
 }
 
 void loop()
 {
+    // Playing We Wish You A Merry Christmas
     playSong(merryChristmasNotes, merryChristmasDurations, sizeof(merryChristmasNotes) / sizeof(int), merryChristmasTempo, BUZZER_PIN, LED_PIN);
     delay(2000);
+
+    // Playing Jingle Bell
     playSong(jingleBellNotes, jingleBellDurations, sizeof(jingleBellNotes) / sizeof(int), jingleBellTempo, BUZZER_PIN, LED_PIN);
 
     delay(30000);
-}
-
-void playSong(int notes[], int durations[], int size, int tempo, int buzzerPin, int ledPin)
-{
-
-    int noteDuration = 60000 / tempo; // BPM duration in miliseconds
-    int pause = tempo / 3;
-
-    for (int note = 0; note < size; note++)
-    {
-        int duration = (noteDuration * 4 / durations[note]) - pause;
-
-        digitalWrite(ledPin, HIGH);
-        tone(buzzerPin, notes[note], duration);
-        delay(duration);
-        digitalWrite(ledPin, LOW);
-        delay(pause);
-    }
 }
