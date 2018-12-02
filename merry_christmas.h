@@ -1,5 +1,5 @@
 /*
- * Merry Christmas score
+ * We Wish You a Merry Christmas
  */
 
 int merryChristmasTempo = 120;
