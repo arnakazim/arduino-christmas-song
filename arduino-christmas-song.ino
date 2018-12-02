@@ -16,12 +16,15 @@
 
 #include "blink.h"
 #include "music.h"
+#include "morse.h"
 
 #include "songs/merry_christmas.h"
 #include "songs/jingle_bell.h"
 
 #define BUZZER_PIN 12
 #define LED_PIN 13 // Built-in led
+
+char morseMessage[] = "-.-.- / -- . .-. .-. -.-- / -.-. .... .-. .. ... - -- .- ... / .- -. -.. / .... .- .--. .--. -.-- / -. . .-- / -.-- . .- .-. / .-.-.";
 
 void setup()
 {
@@ -42,6 +45,11 @@ void loop()
 
     // Playing Jingle Bell
     playSong(jingleBellNotes, jingleBellDurations, sizeof(jingleBellNotes) / sizeof(int), jingleBellTempo, BUZZER_PIN, LED_PIN);
+    delay(5000);
 
-    delay(30000);
+    // Play morse message
+    morseCode(morseMessage, sizeof(morseMessage) / sizeof(char), BUZZER_PIN, LED_PIN);
+
+    // Prevent looping again
+    while(true){}
 }
